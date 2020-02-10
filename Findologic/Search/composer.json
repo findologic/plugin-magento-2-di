@@ -1,0 +1,16 @@
+{
+  "name": "findologic/search",
+  "description": "FINDOLOGIC OnSiteSearch increases sales with a better search function in online store.",
+  "type":"magento2-module",
+  "license": ["GPL-3.0"],
+  "version": "2.1.1",
+  "autoload": {
+    "files": ["registration.php"],
+    "psr-4": {
+      "Findologic\\Search\\": ""
+    }
+  },
+  "require": {
+    "findologic/libflexport": "1.4.0"
+  }
+}
