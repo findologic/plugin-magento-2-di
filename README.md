@@ -19,7 +19,7 @@
   * Click on “FINDOLOGIC”, choose desired store view, and enter shop key provided by FINDOLOGIC and click “Save Config” Note: Shop key must be entered in valid format or error will be shown
   * Finally, shop's cache must be cleared
 
-## RUNNING EXPORT
+## Running export
 
   * Call https://shop.url/search/Export/ExportController?shopkey=ABCD&count=20&start=0.
 
