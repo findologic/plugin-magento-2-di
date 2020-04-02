@@ -6,13 +6,13 @@
   * Plug-in content needs to copied into “app/code” folder
   * Run `composer require findologic/libflexport` in your project directory
   * After this, open terminal in “/bin” directory
-  * Type “php magento module:status” to get status of all available modules
-  * “Findologic_Search” module should be listed in the bottom of the list as disabled module
-  * In order to enable module type “php magento module:enable Findologic_Search”
+  * Type `php magento module:status` to get status of all available modules
+  * `Findologic_Search` module should be listed in the bottom of the list as disabled module
+  * In order to enable module type `php magento module:enable Findologic_Search`
 
   **Note**: Maybe you will need to do this with root privileges
 
-  * After this, module should be enabled, and if you type “php magento module:status”, “Findologic_Search” should be listed as enabled module
+  * After this, module should be enabled, and if you type `php magento module:status`, `Findologic_Search` should be listed as enabled module
   * Log-in into Admin panel
   * Click on “Stores” and Under “Settings” menu click on “Configuration”
   * After this, on the left side menu “FINDOLOGIC” should be listed
