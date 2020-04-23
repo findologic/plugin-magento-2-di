@@ -1,6 +1,6 @@
 {
-  "name": "findologic/search",
-  "description": "FINDOLOGIC OnSiteSearch increases sales with a better search function in online store.",
+  "name": "findologic/search-and-navigation",
+  "description": "Findologic increases sales with a better search function in online store.",
   "type":"magento2-module",
   "license": ["GPL-3.0"],
   "version": "1.0.0",
