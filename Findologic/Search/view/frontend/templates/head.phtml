@@ -10,4 +10,5 @@ use Findologic\Search\Helper\TrackingScripts;
     $om = \Magento\Framework\App\ObjectManager::getInstance();
     $tracking = $om->get(TrackingScripts::class);
 
-    echo $tracking->renderScripts($block->getRequest())
+    echo htmlspecialchars($tracking->renderScripts($block->getRequest()));
+?>
