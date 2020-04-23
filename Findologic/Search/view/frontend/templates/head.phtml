@@ -1,12 +1,14 @@
 <?php
+
+use Findologic\Search\Helper\TrackingScripts;
+use Magento\Framework\App\ObjectManager;
 /**
  * @category    FINDOLOGIC
  * @package     Findologic_Search
  * @copyright   Copyright (c) 2015 FINDOLOGIC (http://www.findologic.com)
  */
 
-    $om = \Magento\Framework\App\ObjectManager::getInstance();
-    $tracking = $om->get('\Findologic\Search\Helper\TrackingScripts');
+    $om = ObjectManager::getInstance();
+    $tracking = $om->get(TrackingScripts::class);
 
-    echo $tracking->renderScripts($this->getRequest());
-?>
+    echo $tracking->renderScripts($block->getRequest());
