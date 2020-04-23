@@ -1,6 +1,4 @@
 <?php
-use Findologic\Search\Helper\TrackingScripts;
-
 /**
  * @category    FINDOLOGIC
  * @package     Findologic_Search
@@ -8,7 +6,7 @@ use Findologic\Search\Helper\TrackingScripts;
  */
 
     $om = \Magento\Framework\App\ObjectManager::getInstance();
-    $tracking = $om->get(TrackingScripts::class);
+    $tracking = $om->get('\Findologic\Search\Helper\TrackingScripts');
 
-    echo htmlspecialchars($tracking->renderScripts($block->getRequest()));
+    echo $tracking->renderScripts($this->getRequest());
 ?>

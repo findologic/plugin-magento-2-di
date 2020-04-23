@@ -52,27 +52,27 @@ class ShopkeyValidation extends Value
             // Uncomment this condition if you want to enable main website or default configuration
             // to have same shop key as some store.
             // if (isset($currentId)) {
-            // Check if any store has same shopkey and throws exception.
-            foreach ($stores as $store) {
-                $storeId = $store->getId();
+                // Check if any store has same shopkey and throws exception.
+                foreach ($stores as $store) {
+                    $storeId = $store->getId();
 
-                // Skip check for current store, we only need to check for other stores.
-                if (isset($currentId) && $currentId === $storeId) {
-                    continue;
-                }
+                    // Skip check for current store, we only need to check for other stores.
+                    if (isset($currentId) && $currentId === $storeId) {
+                        continue;
+                    }
 
-                $keyValue = $this->_scope_config->getValue(
-                        'findologic/findologic_group/shopkey',
-                     ScopeInterface::SCOPE_STORE,
-                               $storeId
-                );
-
-                if ($keyValue === $shopKey) {
-                    throw new LocalizedException(
-                        __('Shop key already exists! Each store view must have its own shop key.')
+                    $keyValue = $this->_scope_config->getValue(
+                            'findologic/findologic_group/shopkey',
+                         ScopeInterface::SCOPE_STORE,
+                                   $storeId
                     );
+
+                    if ($keyValue === $shopKey) {
+                        throw new LocalizedException(
+                            __('Shop key already exists! Each store view must have its own shop key.')
+                        );
+                    }
                 }
-            }
             //}
             
             // Check if shopkey is in valid format.
