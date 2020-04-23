@@ -121,8 +121,8 @@ class TrackingScripts extends AbstractHelper
             'if(V.length>0){var Z=V.join(",");' .
             'm.textContent=Z+"{opacity: 0;transition: opacity "+O+" ease-in-out;}."+o+" {opacity: 1 !important;}";' .
             'I.flRevealContainers=function(){' .
-            '   var a=f.querySelectorAll(Z);' .
-            '   for(var T=0;T<a.length;T++){a[T].classList.add(o)}' .
+            'var a=f.querySelectorAll(Z);' .
+            'for(var T=0;T<a.length;T++){a[T].classList.add(o)}' .
             '};' .
             'setTimeout(I.flRevealContainers,l)}' .
             'var W=g+"/static/"+i+"/main.js?usergrouphash=%s"+n;' .

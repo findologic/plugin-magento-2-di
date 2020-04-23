@@ -62,9 +62,9 @@ class ShopkeyValidation extends Value
                 }
 
                 $keyValue = $this->_scope_config->getValue(
-                        'findologic/findologic_group/shopkey',
-                     ScopeInterface::SCOPE_STORE,
-                               $storeId
+                    'findologic/findologic_group/shopkey',
+                    ScopeInterface::SCOPE_STORE,
+                    $storeId
                 );
 
                 if ($keyValue === $shopKey) {
