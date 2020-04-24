@@ -12,11 +12,6 @@ use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 
-/**
- * Class ExportController
- *
- * @package Findologic\Search\Controller\Export
- */
 class ExportController extends Action
 {
     /**

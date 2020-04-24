@@ -5,12 +5,14 @@ use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\ObjectManager;
 use Magento\Store\Model\ScopeInterface;
+use Magento\Catalog\Model\ResourceModel\Category\Collection;
 use Magento\Catalog\Model\Session;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\App\Helper\Context;
 use Magento\Customer\Model\Group;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\StoreManagerInterface;
+
 
 class TrackingScripts extends AbstractHelper
 {
@@ -52,8 +54,7 @@ class TrackingScripts extends AbstractHelper
         CustomerSession $customerSession,
         Group $group,
         StoreManagerInterface $storeManagerInterface
-    )
-    {
+    ) {
         parent::__construct($context);
 
         $this->session = $session;
@@ -106,9 +107,37 @@ class TrackingScripts extends AbstractHelper
      */
     private function headJs()
     {
+        $navSelector = '.fl-navigation-result';
+        $searchSelector = '.fl-result';
+
         $this->getConfData();
 
-        return sprintf('<script type="text/javascript">(function (f,i,n,d,o,l,O,g,I,c){var V=[];var m=f.createElement("style");if(d){V.push(d)}if(c&&I.location.hash.indexOf("#search:")===0){V.push(c)}if(V.length>0){var Z=V.join(",");m.textContent=Z+"{opacity: 0;transition: opacity "+O+" ease-in-out;}."+o+" {opacity: 1 !important;}";I.flRevealContainers=function(){var a=f.querySelectorAll(Z);for(var T=0;T<a.length;T++){a[T].classList.add(o)}};setTimeout(I.flRevealContainers,l)}var W=g+"/static/"+i+"/main.js?usergrouphash=%s"+n;var p=f.createElement("script");p.type="text/javascript";p.async=true;p.src=g+"/static/loader.min.js";var q=f.getElementsByTagName("script")[0];p.setAttribute("data-fl-main",W);q.parentNode.insertBefore(p,q);q.parentNode.insertBefore(m,p)})(document,\'%s\',\'\',\'.fl-navigation-result\',\'fl-reveal\',3000,\'.3s\',\'//cdn.findologic.com\',window,\'.fl-result\');</script>', $this->data['USERGROUP_HASH'], $this->data['HASHED_SHOPKEY']);
+        return sprintf(
+            '<script type="text/javascript">(function (f,i,n,d,o,l,O,g,I,c){' .
+            'var V=[];' .
+            'var m=f.createElement("style");' .
+            'if(d){V.push(d)}' .
+            'if(c&&I.location.hash.indexOf("#search:")===0){V.push(c)}' .
+            'if(V.length>0){var Z=V.join(",");' .
+            'm.textContent=Z+"{opacity: 0;transition: opacity "+O+" ease-in-out;}."+o+" {opacity: 1 !important;}";' .
+            'I.flRevealContainers=function(){' .
+            'var a=f.querySelectorAll(Z);' .
+            'for(var T=0;T<a.length;T++){a[T].classList.add(o)}' .
+            '};' .
+            'setTimeout(I.flRevealContainers,l)}' .
+            'var W=g+"/static/"+i+"/main.js?usergrouphash=%s"+n;' .
+            'var p=f.createElement("script");' .
+            'p.type="text/javascript";' .
+            'p.async=true;' .
+            'p.src=g+"/static/loader.min.js";' .
+            'var q=f.getElementsByTagName("script")[0];' .
+            'p.setAttribute("data-fl-main",W);' .
+            'q.parentNode.insertBefore(p,q);' .
+            'q.parentNode.insertBefore(m,p)})' .
+            '(document,\'%s\',\'\',\'%s\',\'fl-reveal\',3000,\'.3s\',\'//cdn.findologic.com\',window,\'%s\');' .
+            '</script>',
+            $this->data['USERGROUP_HASH'], $this->data['HASHED_SHOPKEY'], $navSelector, $searchSelector);
+
     }
 
     /**
@@ -163,7 +192,7 @@ class TrackingScripts extends AbstractHelper
     {
         if (!array_key_exists($id, self::$categories)) {
             $il = ObjectManager::getInstance();
-            self::$categories[$id] = $il->create('Magento\Catalog\Model\ResourceModel\Category\Collection')
+            self::$categories[$id] = $il->create(Collection::class)
                             ->addAttributeToSelect(['is_active', 'name'])
                             ->addFieldToFilter('entity_id', $id)
                             ->getFirstItem();
