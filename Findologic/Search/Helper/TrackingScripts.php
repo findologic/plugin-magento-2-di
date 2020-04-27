@@ -13,7 +13,6 @@ use Magento\Customer\Model\Group;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\StoreManagerInterface;
 
-
 class TrackingScripts extends AbstractHelper
 {
     /**
@@ -136,8 +135,11 @@ class TrackingScripts extends AbstractHelper
             'q.parentNode.insertBefore(m,p)})' .
             '(document,\'%s\',\'\',\'%s\',\'fl-reveal\',3000,\'.3s\',\'//cdn.findologic.com\',window,\'%s\');' .
             '</script>',
-            $this->data['USERGROUP_HASH'], $this->data['HASHED_SHOPKEY'], $navSelector, $searchSelector);
-
+            $this->data['USERGROUP_HASH'],
+            $this->data['HASHED_SHOPKEY'],
+            $navSelector,
+            $searchSelector
+        );
     }
 
     /**
