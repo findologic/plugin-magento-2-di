@@ -5,7 +5,9 @@
   "license": ["GPL-3.0"],
   "version": "1.0.0",
   "autoload": {
-    "files": ["registration.php"],
+    "files": [
+      "registration.php"
+    ],
     "psr-4": {
       "Findologic\\Search\\": ""
     }
