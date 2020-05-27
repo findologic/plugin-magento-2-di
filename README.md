@@ -22,7 +22,7 @@ For the functionality of the plugin, it's essential to export the product data f
 
 ## Product Export
 
-  * Call https://<shop-domain>/search/Export/ExportController?shopkey=ABCD&count=20&start=0.
+  * Call https://<shop-domain>/search/Export/ExportController?shopkey=ABCD&count=20&start=0
 
   Required parameters:
   * `shopkey` → Provided by Findologic
