@@ -9,9 +9,11 @@ For the functionality of the plugin, it's essential to export the product data f
   * Run `bin/magento module:status` to get status of all available modules
   * `Findologic_Search` module should be listed in the bottom of the list as disabled module
   * Enable module with `bin/magento module:enable Findologic_Search`
-  * Verify status of module with `bin/magento module:status`
-    * `Findologic_Search` should be listed as enabled module
-  * Log-in into Admin panel
+  * The status of modules can be checked with `bin/magento module:status`
+  * To make sure that the enabled modules are properly registered, run 'bin/magento setup:upgrade'
+  * Run the 'bin/magento setup:di:compile' command to generate classes
+
+  * Login to Magento backend
   * Click on *Stores* and in *Settings* choose *Configuration*
   * Click on *FINDOLOGIC* on the left side menu, choose desired store view, and enter shop key provided by Findologic and click *Save Config* 
     * Note: Shop key must be entered in valid format or error will be shown
