@@ -1,44 +1,38 @@
-# FINDOLOGIC Magento 2 DI Plugin - libflexport only
+# Findologic Magento 2 DI Plugin
+
+For the functionality of the plugin, it's essential to export the product data from the shop to Findologic. For this purpose, the Findologic export library [libflexport](https://github.com/findologic/libflexport) is included. By default the export contains only demo product data.
 
 ## Installation
 
-  FINDOLOGIC MAGENTO 2 plug-in installation procedure is basically the same as for any other MAGENTO 2 plug-in. It can be summed up in a few simple steps:
   * Plug-in content needs to copied into “app/code” folder
   * Run `composer require findologic/libflexport` in your project directory
-  * After this, open terminal in “/bin” directory
-  * Type `php magento module:status` to get status of all available modules
+  * Run `bin/magento module:status` to get status of all available modules
   * `Findologic_Search` module should be listed in the bottom of the list as disabled module
-  * In order to enable module type `php magento module:enable Findologic_Search`
+  * In order to enable module type `bin/magento module:enable Findologic_Search`
 
-  **Note**: Maybe you will need to do this with root privileges
+  **Note**: Depending on permission setting may need root privileges
 
-  * After this, module should be enabled, and if you type `php magento module:status`, `Findologic_Search` should be listed as enabled module
+  * The plugin should be enabled you can verify it with `bin/magento module:status`
+    * `Findologic_Search` should be listed as enabled module
   * Log-in into Admin panel
-  * Click on “Stores” and Under “Settings” menu click on “Configuration”
-  * After this, on the left side menu “FINDOLOGIC” should be listed
-  * Click on “FINDOLOGIC”, choose desired store view, and enter shop key provided by FINDOLOGIC and click “Save Config” Note: Shop key must be entered in valid format or error will be shown
-  * Finally, shop's cache must be cleared
+  * Click on *Stores* and in *Settings* choose *Configuration*
+  * Click on *FINDOLOGIC* on the left side menu, choose desired store view, and enter shop key provided by Findologic and click *Save Config* 
+    * Note: Shop key must be entered in valid format or error will be shown
+  * Clear the Magento shop cache
 
-## Running export
+## Product Export
 
-  * Call https://shop.url/search/Export/ExportController?shopkey=ABCD&count=20&start=0.
+  * Call https://<shop-domain>/search/Export/ExportController?shopkey=ABCD&count=20&start=0.
 
-  Three query parameters that are necessary for successfully running the export are:
-  * shopkey → SHOPKEY is provided by FINDOLOGIC
-  * start → number that should not be lower than zero
-  * count → number that should not lower than zero and “start” number
+  Required parameters:
+  * `shopkey` → Provided by Findologic
+  * `start` → number > 0 
+  * `count` → number > 0
   
-  The export needs to be written by the customer. The export of the products is **not included**.
-  By default you can find two demo products, when running the export.
 
-## Deployment & Release
+## Release
 
 1. Go to directory `Findologic` and run `composer install --no-dev`.
 1. Create a zip file named `FindologicSearch-x.x.x.zip` that includes all contents of the `Findologic/Search` folder.
   * Be aware to neither include directory `Findologic` nor `Search` in the zip file.
-1. Go to https://developer.magento.com/extensions/ and select the plugin for the platform "M2".
-1. Click on *Submit a New Version* and type the version constraint.
-1. In the next step click on *Attach Package* and upload the created zip file.
-1. For compatibility choose 2.0, 2.1, 2.2 and 2.3 (other versions are not tested yet).
- You may include a License, Release Notes, etc.
-1. Click on *Submit* to submit the plugin. You may need to require a review.
+1. Go to https://developer.magento.com/extensions/ and upload new version
