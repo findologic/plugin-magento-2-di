@@ -4,16 +4,17 @@ For the functionality of the plugin, it's essential to export the product data f
 
 ## Installation
 
+### Magento file system
   * Copy folder `Findologic` to *app/code* in your Magento 2 shop
   * Run `composer require findologic/libflexport` in your project directory
   * Run `bin/magento module:status` to get status of all available modules
   * `Findologic_Search` module should be listed in the bottom of the list as disabled module
   * Enable module with `bin/magento module:enable Findologic_Search`
   * The status of modules can be checked with `bin/magento module:status`
-  * To make sure that the enabled modules are properly registered, run 'bin/magento setup:upgrade'
-  * Run the 'bin/magento setup:di:compile' command to generate classes
+  * To make sure that the enabled modules are properly registered, run `bin/magento setup:upgrade`
+  * Run the `bin/magento setup:di:compile` command to generate classes
 
-  * Login to Magento backend
+### Magento backend
   * Click on *Stores* and in *Settings* choose *Configuration*
   * Click on *FINDOLOGIC* on the left side menu, choose desired store view, and enter shop key provided by Findologic and click *Save Config* 
     * Note: Shop key must be entered in valid format or error will be shown
