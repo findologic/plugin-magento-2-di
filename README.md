@@ -26,7 +26,7 @@ For the functionality of the plugin, it's essential to export the product data f
 
   Required parameters:
   * `shopkey` → Provided by Findologic
-  * `start` → number > 0 
+  * `start` → number >= 0 
   * `count` → number > 0
   
 
