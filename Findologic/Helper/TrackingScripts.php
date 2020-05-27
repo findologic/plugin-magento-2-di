@@ -96,7 +96,7 @@ class TrackingScripts extends AbstractHelper
         $userGroupHash = $this->userGroupToHash($shopKey, $userGroup);
         
         $this->data['USERGROUP_HASH'] = $this->customerSession->isLoggedIn() ? $userGroupHash : '';
-        $this->data['HASHED_SHOPKEY'] = strtoupper(md5($shopKey));
+        $this->data['SHOPKEY'] = strtoupper($shopKey);
     }
 
     /**
@@ -124,11 +124,11 @@ class TrackingScripts extends AbstractHelper
             'for(var T=0;T<a.length;T++){a[T].classList.add(o)}' .
             '};' .
             'setTimeout(I.flRevealContainers,l)}' .
-            'var W=g+"/static/"+i+"/main.js?usergrouphash=%s"+n;' .
+            'var W=g+"/config/"+i+"/main.js?usergrouphash=%s"+n;' .
             'var p=f.createElement("script");' .
             'p.type="text/javascript";' .
             'p.async=true;' .
-            'p.src=g+"/static/loader.min.js";' .
+            'p.src=g+"/config/loader.min.js";' .
             'var q=f.getElementsByTagName("script")[0];' .
             'p.setAttribute("data-fl-main",W);' .
             'q.parentNode.insertBefore(p,q);' .
@@ -136,7 +136,7 @@ class TrackingScripts extends AbstractHelper
             '(document,\'%s\',\'\',\'%s\',\'fl-reveal\',3000,\'.3s\',\'//cdn.findologic.com\',window,\'%s\');' .
             '</script>',
             $this->data['USERGROUP_HASH'],
-            $this->data['HASHED_SHOPKEY'],
+            $this->data['SHOPKEY'],
             $navSelector,
             $searchSelector
         );
