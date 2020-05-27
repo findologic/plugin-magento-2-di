@@ -15,7 +15,7 @@ For the functionality of the plugin, it's essential to export the product data f
   * Run the `bin/magento setup:di:compile` command to generate classes
 
 ### Magento backend
-  * Click on *Stores* and in *Settings* choose *Configuration*
+  * Click on *Stores* and *Configuration*
   * Click on *FINDOLOGIC* on the left side menu, choose desired store view, and enter shop key provided by Findologic and click *Save Config* 
     * Note: Shop key must be entered in valid format or error will be shown
   * Clear the Magento shop cache
