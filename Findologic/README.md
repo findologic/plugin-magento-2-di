@@ -34,7 +34,8 @@
 ## Deployment & Release
 
 1. Go to directory `Findologic` and run `composer install --no-dev`.
-1. Create a zip file named `FindologicSearch-x.x.x.zip` that includes all contents of the `Findologic` folder.
+1. Create a zip file named `FindologicSearch-x.x.x.zip` that includes all contents of the `Findologic/Search` folder.
+  * Be aware to neither include directory `Findologic` nor `Search` in the zip file.
 1. Go to https://developer.magento.com/extensions/ and select the plugin for the platform "M2".
 1. Click on *Submit a New Version* and type the version constraint.
 1. In the next step click on *Attach Package* and upload the created zip file.
