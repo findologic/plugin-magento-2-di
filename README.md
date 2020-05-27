@@ -4,7 +4,7 @@ For the functionality of the plugin, it's essential to export the product data f
 
 ## Installation
 
-  * Plug-in content needs to copied into “app/code” folder
+  * Copy folder `Findologic` to *app/code* in your Magento 2 shop
   * Run `composer require findologic/libflexport` in your project directory
   * Run `bin/magento module:status` to get status of all available modules
   * `Findologic_Search` module should be listed in the bottom of the list as disabled module
