@@ -105,10 +105,12 @@ class ExportController extends Action
         }
 
         if (!file_exists(__DIR__ . '/../../../Export/Export.php')) {
-            // TODO: Add the link to the export plugin.
             return $this->rawResponse
                 ->setHeader('Content-type', 'text/plain')
-                ->setContents('Please install the export plugin. You can find it here http://something');
+                ->setContents('Please install the export plugin. You can find it here ' .
+                    'https://docs.findologic.com/lib/exe/fetch.php' .
+                    '?media=integration_documentation:plugins:magento_2_export_plugin.zip'
+                );
         }
 
         require_once __DIR__ . '/../../../Export/Export.php';
