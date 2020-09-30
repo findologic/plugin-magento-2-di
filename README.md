@@ -11,5 +11,5 @@ In order to use the Findologic service you need to install:
 1. Go to directory `Findologic/Search` and run `composer install --no-dev`.
 1. Create a zip file named `FindologicSearch-x.x.x.zip` that includes all contents of the `Findologic/Search` folder.
    
-   *Be aware to neither include directory `Findologic` nor `Search` in the zip file.*
+   *Be aware to neither include directory `Findologic`, `Search` nor `vendor` in the zip file.*
 1. Go to https://developer.magento.com/extensions/ and upload new version
