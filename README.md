@@ -1,38 +1,15 @@
 # Findologic Magento 2 DI Plugin
 
-For the functionality of the plugin, it's essential to export the product data from the shop to Findologic. For this purpose, the Findologic export library [libflexport](https://github.com/findologic/libflexport) is included. By default the export contains only demo product data.
+In order to use the Findologic service you need to install:
+* Findologic [plugin-magento-2-di](https://github.com/findologic/plugin-magento-2-di) for search & navigation.
+* Findologic [plugin-magento-2-di-export](https://github.com/findologic/plugin-magento-2-di-export/) for product export.
 
 ## Installation
-
-### Magento file system
-  * Copy folder `Findologic` to *app/code* in your Magento 2 shop
-  * Run `composer require findologic/libflexport` in your project directory
-  * Run `bin/magento module:status` to get status of all available modules
-  * `Findologic_Search` module should be listed in the bottom of the list as disabled module
-  * Enable module with `bin/magento module:enable Findologic_Search`
-  * The status of modules can be checked with `bin/magento module:status`
-  * To make sure that the enabled modules are properly registered, run `bin/magento setup:upgrade`
-  * Run the `bin/magento setup:di:compile` command to generate classes
-
-### Magento backend
-  * Click on *Stores* and *Configuration*
-  * Click on *FINDOLOGIC* on the left side menu, choose desired store view, and enter shop key provided by Findologic and click *Save Config* 
-    * Note: Shop key must be entered in valid format or error will be shown
-  * Clear the Magento shop cache
-
-## Product Export
-
-  * Call `https://<shop-domain>/search/Export/ExportController?shopkey=ABCD&count=20&start=0`
-
-  Required parameters:
-  * `shopkey` → Provided by Findologic
-  * `start` → number >= 0 
-  * `count` → number > 0
-  
-
+* See [Integration with Magento plugin](https://docs.findologic.com/doku.php?id=integration_documentation:magento).
+ 
 ## Release
-
 1. Go to directory `Findologic` and run `composer install --no-dev`.
 1. Create a zip file named `FindologicSearch-x.x.x.zip` that includes all contents of the `Findologic/Search` folder.
-  * Be aware to neither include directory `Findologic` nor `Search` in the zip file.
+   
+   *Be aware to neither include directory `Findologic` nor `Search` in the zip file.*
 1. Go to https://developer.magento.com/extensions/ and upload new version

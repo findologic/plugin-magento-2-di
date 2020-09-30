@@ -3,7 +3,7 @@
 namespace Findologic\Search\Controller\Export;
 
 use FINDOLOGIC\Export\Exporter;
-use Findologic\Search\Example\XmlExample;
+use Findologic\MagentoExport\Export;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -104,8 +104,18 @@ class ExportController extends Action
                 ->setContents('Run "composer require findologic/libflexport" in your project directory');
         }
 
-        $xmlExample = new XmlExample();
-        $xml = $xmlExample->createExport();
+        if (!file_exists(__DIR__ . '/../../../Export/Export.php')) {
+            return $this->rawResponse
+                ->setHeader('Content-type', 'text/plain')
+                ->setContents('Please install the export plugin. You can find it here ' .
+                    'https://docs.findologic.com/lib/exe/fetch.php' .
+                    '?media=integration_documentation:plugins:magento_2_export_plugin.zip'
+                );
+        }
+
+        require_once __DIR__ . '/../../../Export/Export.php';
+        $export = new Export();
+        $xml = $export->startExport($this->shopKey, $this->start, $this->count);
 
         return $this->rawResponse
             ->setHeader('Content-type', 'application/xml')
