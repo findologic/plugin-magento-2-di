@@ -1,5 +1,5 @@
 {
-  "name": "findologic/search-and-navigation",
+  "name": "findologic/search-and-navigation-platform",
   "description": "Findologic increases sales with a better search function in online store.",
   "type":"magento2-module",
   "license": ["GPL-3.0"],
