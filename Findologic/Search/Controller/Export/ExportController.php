@@ -130,7 +130,7 @@ class ExportController extends Action
         if (!$this->moduleManager->isEnabled('Findologic_Export')) {
             return $this->rawResponse
                 ->setHeader('Content-type', 'text/plain')
-                ->setContents('Please install the export plugin. You can find it here ' .
+                ->setContents('The Findologic export plugin is not installed! You can download it here: ' .
                     'https://docs.findologic.com/lib/exe/fetch.php' .
                     '?media=integration_documentation:plugins:magento_2_export_plugin.zip'
                 );
