@@ -3,11 +3,13 @@
 namespace Findologic\Search\Controller\Export;
 
 use FINDOLOGIC\Export\Exporter;
-use Findologic\MagentoExport\Export;
+use Findologic\Export\Helper\ExportHelper;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Controller\Result\Raw;
+use Magento\Framework\Module\Manager;
+use Magento\Framework\ObjectManagerInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
@@ -60,18 +62,32 @@ class ExportController extends Action
     private $scopeConfig;
 
     /**
+     * @var Manager
+     */
+    private $moduleManager;
+
+    /**
+     * @var ExportHelper|null
+     */
+    private $exportHelper;
+
+    /**
      * @param Context $context
      * @param Collection $productsCollection
      * @param Raw $rawResponse
      * @param StoreManagerInterface $storeManager
      * @param ScopeConfigInterface $scopeConfig
+     * @param Manager $moduleManager
+     * @param ObjectManagerInterface $objectManager
      */
     public function __construct(
         Context $context,
         Collection $productsCollection,
         Raw $rawResponse,
         StoreManagerInterface $storeManager,
-        ScopeConfigInterface $scopeConfig
+        ScopeConfigInterface $scopeConfig,
+        Manager $moduleManager,
+        ObjectManagerInterface $objectManager
     ) {
         parent::__construct($context);
 
@@ -79,6 +95,13 @@ class ExportController extends Action
         $this->rawResponse = $rawResponse;
         $this->storeManager = $storeManager;
         $this->scopeConfig = $scopeConfig;
+        $this->moduleManager = $moduleManager;
+
+        // Use ObjectManager to manually get the helper, to avoid an exception, in case the export plugin
+        // is not yet installed.
+        if (class_exists(ExportHelper::class)) {
+            $this->exportHelper = $objectManager->get('Findologic\Export\Helper\ExportHelper');
+        }
     }
 
     /**
@@ -104,17 +127,16 @@ class ExportController extends Action
                 ->setContents('Run "composer require findologic/libflexport" in your project directory');
         }
 
-        if (!file_exists(__DIR__ . '/../../../Export/Export.php')) {
+        if (!$this->moduleManager->isEnabled('Findologic_Export')) {
             return $this->rawResponse
                 ->setHeader('Content-type', 'text/plain')
-                ->setContents('Please install the export plugin. You can find it here ' .
+                ->setContents('The Findologic export plugin is not installed! You can download it here: ' .
                     'https://docs.findologic.com/lib/exe/fetch.php' .
                     '?media=integration_documentation:plugins:magento_2_export_plugin.zip'
                 );
         }
 
-        require_once __DIR__ . '/../../../Export/Export.php';
-        $export = new Export();
+        $export = $this->exportHelper->buildExportInstance();
         $xml = $export->startExport($this->shopKey, $this->start, $this->count);
 
         return $this->rawResponse
