@@ -2,7 +2,7 @@ require([
         'jquery',
         'mage/translate',
         'jquery/validate'],
-    function($){
+    function ($) {
         $.validator.addMethod(
             'shop-key-format', function (v) {
                 var letterNumber = /^[0-9a-zA-Z]+$/;

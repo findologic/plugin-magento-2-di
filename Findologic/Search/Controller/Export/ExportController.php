@@ -88,7 +88,8 @@ class ExportController extends Action
         ScopeConfigInterface $scopeConfig,
         Manager $moduleManager,
         ObjectManagerInterface $objectManager
-    ) {
+    )
+    {
         parent::__construct($context);
 
         $this->productsCollection = $productsCollection;
