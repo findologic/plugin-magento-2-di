@@ -2,8 +2,7 @@
 
 In order to use the Findologic service you need to install:
 * Findologic [plugin-magento-2-di](https://github.com/findologic/plugin-magento-2-di) for search & navigation integration.
-* Findologic [plugin-magento-2-di-export](https://github.com/findologic/plugin-magento-2-di-export/) for product export.
-Includes two demo products.
+* Findologic [plugin-magento-2-di-export](https://github.com/findologic/plugin-magento-2-di-export/) for product export. Includes two demo products.
 
 ## Installation
 * See [Integration with Magento plugin](https://docs.findologic.com/doku.php?id=integration_documentation:magento).
