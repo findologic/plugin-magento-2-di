@@ -9,6 +9,7 @@ use Magento\Framework\App\Request\Http;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
+use Magento\Framework\Phrase;
 use Magento\Framework\Registry;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\Exception\LocalizedException;
@@ -76,13 +77,15 @@ class ShopkeyValidation extends Value
                 );
 
                 if ($keyValue === $shopKey) {
-                    throw new LocalizedException('Shop key already exists! Each store view must have its own shop key.');
+                    $phrase = new Phrase('Shop key already exists! Each store view must have its own shop key.');
+                    throw new LocalizedException($phrase);
                 }
             }
 
             // Check if shopkey is in valid format.
             if (!preg_match('/^[A-Z0-9]{32}$/', $shopKey)) {
-                throw new LocalizedException('Shop key format is not valid!');
+                $phrase = new Phrase('Shop key format is not valid!');
+                throw new LocalizedException($phrase);
             }
 
             $this->setValue(trim($shopKey));
