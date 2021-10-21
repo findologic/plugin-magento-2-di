@@ -32,8 +32,7 @@ class ShopkeyValidation extends Value
         AbstractResource $resource = null,
         AbstractDb $resourceCollection = null,
         array $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $registry, $config, $cacheTypeList, $resource, $resourceCollection, $data);
         $this->_request = $request;
         $this->_store_manager = $storeManager;

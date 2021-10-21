@@ -7,16 +7,31 @@
         <tab id="findologic" translate="label" sortOrder="100">
             <label>Findologic</label>
         </tab>
-        <section id="configuration" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="1"
+        <section id="configuration"
+                 translate="label"
+                 type="text"
+                 sortOrder="140"
+                 showInDefault="1"
+                 showInWebsite="1"
                  showInStore="1">
             <label>Configuration</label>
             <tab>findologic</tab>
             <!-- resource tag name which we have to defined in the acl.xml -->
             <resource>Findologic_Search::config_findologic</resource>
-            <group id="shopkeygroup" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+            <group id="shopkeygroup"
+                   translate="label"
+                   type="text"
+                   sortOrder="1"
+                   showInDefault="1"
+                   showInWebsite="1"
                    showInStore="1">
                 <label>Findologic configuration</label>
-                <field id="shopkey" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                <field id="shopkey"
+                       translate="label"
+                       type="text"
+                       sortOrder="1"
+                       showInDefault="1"
+                       showInWebsite="1"
                        showInStore="1">
                     <label>Shop key</label>
                     <config_path>findologic/findologic_group/shopkey</config_path>
