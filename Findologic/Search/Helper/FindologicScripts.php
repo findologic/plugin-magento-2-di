@@ -13,7 +13,7 @@ use Magento\Customer\Model\Group;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\StoreManagerInterface;
 
-class TrackingScripts extends AbstractHelper
+class FindologicScripts extends AbstractHelper
 {
     /**
      * @var array
